@@ -28,6 +28,11 @@ public class TreeController {
     return ResponseEntity.ok(branchRepository.findById(id));
   }
 
+  @GetMapping("/getMainTopics")
+  public ResponseEntity<List<Branch>> getMainTopics() {
+    return ResponseEntity.ok(branchRepository.findByParentId(null));
+  }
+
   @PostMapping("/")
   public ResponseEntity<Branch> postBranch(
           @RequestBody Branch branch) {
